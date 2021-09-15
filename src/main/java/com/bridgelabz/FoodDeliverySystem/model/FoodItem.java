@@ -1,23 +1,31 @@
 package com.bridgelabz.FoodDeliverySystem.model;
 
 public class FoodItem {
-	enum Taste {
+	public enum Taste {
 		SOUR, SWEET, SPICY, SWEET_SOUR
 	};
 
-	enum Category {
+	public enum Category {
 		STARTER, MAIN_COURSE, BEVERAGES
 	};
 
-	enum VegType {
+	public enum VegType {
 		Veg, Non_Veg
 	};
 
-	protected Taste taste;
-	protected Category category;
-	protected VegType vegType;
-	protected int price;
-	protected String itemName;
+	public Taste taste;
+	public Category category;
+	public VegType vegType;
+	public int price;
+	public String itemName;
+
+	public String getItemName() {
+		return itemName;
+	}
+
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
+	}
 
 	public int getPrice() {
 		return price;
@@ -33,4 +41,15 @@ public class FoodItem {
 				+ ", itemName=" + itemName + "]";
 	}
 
+	public void setTaste(Taste tasteChoice) {
+		this.taste = tasteChoice;
+	}
+
+	public void setCategory(Category categoryChoice) {
+		this.category = categoryChoice;
+	}
+
+	public void setType(VegType type) {
+		this.vegType = type;
+	}
 }
