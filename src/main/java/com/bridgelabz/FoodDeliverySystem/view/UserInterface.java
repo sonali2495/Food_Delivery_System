@@ -1,7 +1,7 @@
 package com.bridgelabz.FoodDeliverySystem.view;
 
-import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 
 import com.bridgelabz.FoodDeliverySystem.controller.Application;
 import com.bridgelabz.FoodDeliverySystem.model.FoodItem;
@@ -19,20 +19,18 @@ public class UserInterface {
 		return instance;
 	}
 
-	public void print(List<FoodItem> foodList) {
-		for (int i = 0; i < foodList.size(); i++) {
-			System.out.println(foodList.get(i) + "\n");
-		}
+	public void print(Set<FoodItem> set) {
+		set.forEach(System.out::println);
 	}
 	
 	public void showUserMenu() {
 		Scanner sc = new Scanner(System.in);
-		int n = 0;
+		int exitValue = 0;
 		Application application = new Application();
-		while (n != 5) {
+		while (exitValue != 5) {
 			System.out.println("\nEnter your choice: \n1. To add an item. \n2. To remove an item. \n3. Print the menu. \n4. To Edit. \n5. To exit");
-			n = sc.nextInt();
-			application.handleUserSelection(n);
+			exitValue = sc.nextInt();
+			application.handleUserSelection(exitValue);
 		}
 	}
 }

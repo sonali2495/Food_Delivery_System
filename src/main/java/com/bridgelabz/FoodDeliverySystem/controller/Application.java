@@ -1,4 +1,5 @@
 package com.bridgelabz.FoodDeliverySystem.controller;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -27,7 +28,7 @@ public class Application {
 				break;
 			case 2:
 				try {
-					if(foodStore.getFoodList().get(0) != null) {
+					if(foodStore.getFoodList() != null) {
 						System.out.println("Enter the name which you want to remove:");
 						String foodName = sc.nextLine();
 						foodStore.remove(foodName);
@@ -46,6 +47,8 @@ public class Application {
 					String editName = sc.nextLine();
 					foodItem = foodStore.getFoodItem(editName);
 					try {
+						if (foodItem == null) 
+							throw new NoSuchElementException();
 						if(Objects.equals(editName, foodItem.itemName)) {
 							foodStore.editItem(foodItem);
 						}

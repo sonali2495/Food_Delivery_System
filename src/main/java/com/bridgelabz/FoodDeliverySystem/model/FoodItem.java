@@ -1,6 +1,24 @@
 package com.bridgelabz.FoodDeliverySystem.model;
 
+import java.util.Objects;
+
 public class FoodItem {
+	@Override
+	public int hashCode() {
+		return Objects.hash(itemName);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		FoodItem other = (FoodItem) obj;
+		return Objects.equals(itemName, other.itemName);
+	}
 	public enum Taste {
 		SOUR, SWEET, SPICY, SWEET_SOUR
 	};

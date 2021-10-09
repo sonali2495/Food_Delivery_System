@@ -1,17 +1,17 @@
 package com.bridgelabz.FoodDeliverySystem.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
 import java.util.Scanner;
+import java.util.Set;
 
 //Data Layer/ Model Layer
 public class FoodStore implements foodOperations{
 	private static FoodStore instance;
 	
-	public FoodStore() {
+	private FoodStore() {
 	}
-
-	List<FoodItem> foodList = new ArrayList<>();
+	
+	Set<FoodItem> foodList = new HashSet();
 	
 	public static synchronized FoodStore getInstance() {
 		if(instance == null) {
@@ -25,32 +25,17 @@ public class FoodStore implements foodOperations{
 	}
 	
 	public void remove(String foodName) {
-		for(int i=0; i<foodList.size(); i++) {
-				if(foodList.get(i).itemName.equals(foodName)){
-					foodList.remove(foodList.get(i));
-					System.out.println("Item Removed Successfuly!");
-				}
-				else {
-				System.out.println("Item Name Not found In The List");
-				break;
-				}
-		}
+		foodList.remove(foodName);
+		System.out.println("Item removed successfully!");
 	}
 	
-	public List<FoodItem> getFoodList() {
-		return foodList;
-	}
-	public List getList() {
+	public Set<FoodItem> getFoodList() {
 		return foodList;
 	}
 	
-	public FoodItem getFoodItem(String foodName) {
-		for(FoodItem foodItem : foodList) {
-			if(foodName.equals(foodItem.itemName)) {
-				return foodItem;
-			}
-		}
-		return null;
+	public FoodItem getFoodItem(String foodName) {		
+		return foodList.stream().filter(fooditems -> foodName.equals(fooditems.itemName)).findFirst().orElse(null);
+
 	}
 	
 	public FoodItem createItem() {

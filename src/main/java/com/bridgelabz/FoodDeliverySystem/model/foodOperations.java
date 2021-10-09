@@ -1,15 +1,13 @@
 package com.bridgelabz.FoodDeliverySystem.model;
 
-import java.util.List;
+import java.util.Set;
 
 public interface foodOperations {
 	void add(FoodItem foodItem);
 
 	void remove(String foodName);
 
-	List<FoodItem> getFoodList();
-
-	List getList();
+	Set<FoodItem> getFoodList();
 
 	FoodItem getFoodItem(String foodName);
 }
